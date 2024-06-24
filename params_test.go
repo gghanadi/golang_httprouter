@@ -21,7 +21,9 @@ import (
 func TestParams(t *testing.T) {
 	router := httprouter.New()
 	router.GET("/product/:id", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-		id := p.ByName("id") // byname harus sama dengan judul title web nya (kalo :id ya maka harus id juga)
+		// untuk name parameter harus ada ":"
+		// byname harus sama dengan judul title web nya (kalo :id ya maka harus id juga)
+		id := p.ByName("id")
 		text := "Product " + id
 		fmt.Fprint(w, text)
 	})
